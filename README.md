@@ -1,30 +1,28 @@
-# React + TypeScript + Vite
+# Лотерея: Реализация логики игры
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Этот проект представляет собой реализацию игры лотереи, где участник должен отметить восемь чисел из девятнадцати в первом поле и одно число во втором поле. Затем, сравнивая отмеченные числа с двумя случайно сгенерированными массивами чисел, определяется, является ли пользователь победителем.
 
-Currently, two official plugins are available:
+_Задача :_
+Разработать интерфейс тестирования, который поддерживает следующие типы вопросов:
+- Минимальная визуализация: Создать минимальную визуализацию, соответствующую описанным правилам игры.
+- Аккуратный, чистый код: Придерживаться стандартов качества кода, включая использование линтеров (eslint).
+- Адаптивная mobile-first вёрстка: Создать адаптивную вёрстку, приближенную к макету, доступному по ссылке.
+- Генерация случайно выбранных полей: Реализовать функцию генерации случайно выбранных чисел по нажатию на значок волшебной палочки.
+- Отправка выбранных чисел на сервер: Реализовать логику отправки выбранных чисел на сервер по любому URL'у (использование фейкового URL для избежания проблем с CORS).
+  
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Установка
 
-## Expanding the ESLint configuration
+1. Склонируйте репозиторий
+2. Установите зависимости:
+   `npm install`
+3. Запустите приложение:
+   `npm run dev`
+4. Откройте http://localhost:5173 в вашем браузере.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Технологии
 
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+- React
+- TypeScript
+- Viet (сборщик)
+- Mui (для стилизации компонентов)
