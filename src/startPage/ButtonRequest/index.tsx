@@ -1,5 +1,7 @@
 import { Button } from "@mui/material";
 
+import { ResponseType } from "../../type";
+
 interface FetchOptions {
   method?: string;
   headers?: Record<string, string>;
@@ -31,9 +33,11 @@ const fetchWithRetry = async ({
 const ButtonRequest = ({
   numberLong,
   numberShort,
+  setResponse,
 }: {
   numberLong: number[];
   numberShort: number[];
+  setResponse: React.Dispatch<React.SetStateAction<ResponseType | null>>;
 }) => {
   const handleSubmit = async () => {
     const data = {
@@ -46,7 +50,7 @@ const ButtonRequest = ({
 
     try {
       const response = await fetchWithRetry({
-        url: "https://jsonplaceholder.typicode/posts", // URL РАНДОМ
+        url: "https://jsonplaceholder.typicode.com/posts", // URL РАНДОМ
         options: {
           method: "POST",
           headers: {
@@ -55,7 +59,9 @@ const ButtonRequest = ({
           body: JSON.stringify(data),
         },
       });
+      setResponse(response);
       console.log("Успешно отправлено:", response);
+      return response;
     } catch (error) {
       console.error("Ошибка:", error);
       alert("Не удалось отправить данные. Пожалуйста, попробуйте еще раз.");
@@ -68,6 +74,7 @@ const ButtonRequest = ({
       sx={{
         width: "9.3vw",
         height: "4vh",
+        marginBottom: "0.5rem",
         border: "1px solid rgb(0, 0, 0)",
         borderRadius: "40px",
         color: "black",

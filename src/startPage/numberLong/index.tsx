@@ -1,6 +1,8 @@
-import { Box } from "@mui/material";
 import { useState, useEffect, FC } from "react";
-import { numberLong } from "../../interface";
+
+import { Box } from "@mui/material";
+
+import { numberLong } from "../../type";
 
 const number = [
   "1",

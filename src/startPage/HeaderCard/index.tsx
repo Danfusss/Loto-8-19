@@ -42,7 +42,7 @@ const HeaderCard = ({
         aria-label="delete"
         size="small"
         onClick={() => {
-          setNumberLong(generateRandomArray(1, 10, 8));
+          setNumberLong(generateRandomArray(1, 19, 8));
           setNumberShort(generateRandomArray(1, 2, 1));
         }}
       >

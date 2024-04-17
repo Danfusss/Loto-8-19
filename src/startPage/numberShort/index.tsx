@@ -1,6 +1,8 @@
-import { Box } from "@mui/material";
 import { useState, useEffect, FC } from "react";
-import { numberShort } from "../../interface";
+
+import { Box } from "@mui/material";
+
+import { numberShort } from "../../type";
 
 const number = ["1", "2"];
 
@@ -40,10 +42,10 @@ const NumberShort: FC<numberShort> = ({ numberShort, setNumberShort }) => {
     setNumberShort((prevSelectedIndexes) => {
       if (prevSelectedIndexes.includes(numericValue)) {
         return prevSelectedIndexes.filter((i) => i !== numericValue);
-      } else if (prevSelectedIndexes.length < 8) {
+      } else if (prevSelectedIndexes.length < 1) {
         return [...prevSelectedIndexes, numericValue];
       } else {
-        alert("Вы можете выбрать только 8 цифр.");
+        alert("Вы можете выбрать только 1 цифру.");
         return prevSelectedIndexes;
       }
     });
@@ -53,7 +55,7 @@ const NumberShort: FC<numberShort> = ({ numberShort, setNumberShort }) => {
     <Box
       sx={{
         width: "14.8vw",
-        height: "11vh",
+        height: "5vh",
         display: "flex",
         flexWrap: "wrap",
       }}

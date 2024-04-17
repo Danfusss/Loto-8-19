@@ -1,6 +1,8 @@
-import { Box, Typography } from "@mui/material";
-import NumberLong from "../numberLong";
 import { FC } from "react";
+
+import { Box, Typography } from "@mui/material";
+
+import NumberLong from "../numberLong";
 
 interface FirstField {
   numberLong: number[];

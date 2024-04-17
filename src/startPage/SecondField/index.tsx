@@ -1,10 +1,12 @@
+import { Dispatch, FC, SetStateAction } from "react";
+
 import { Box, Typography } from "@mui/material";
+
 import NumberShort from "../numberShort";
-import { FC } from "react";
 
 interface SecondField {
   numberShort: number[];
-  setNumberShort: React.Dispatch<React.SetStateAction<number[]>>;
+  setNumberShort: Dispatch<SetStateAction<number[]>>;
 }
 
 const SecondField: FC<SecondField> = ({ numberShort, setNumberShort }) => {

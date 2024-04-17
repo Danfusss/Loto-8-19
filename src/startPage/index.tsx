@@ -3,12 +3,21 @@ import { Box } from "@mui/material";
 import FirstField from "./FirstField";
 import SecondField from "./SecondField";
 import HeaderCard from "./HeaderCard";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ButtonRequest from "./ButtonRequest";
+import WinTicket from "./WinTicket";
+
+import { ResponseType } from "../type";
 
 const StartPage = () => {
   const [numberLong, setNumberLong] = useState<number[]>([]);
   const [numberShort, setNumberShort] = useState<number[]>([]);
+  const [response, setResponse] = useState<ResponseType | null>(null);
+
+  useEffect(() => {
+    console.log(response?.isTicketWon);
+  }, [response]);
+
   return (
     <Box
       sx={{
@@ -23,13 +32,26 @@ const StartPage = () => {
         background: "rgb(255, 255, 255)",
       }}
     >
-      <HeaderCard
-        setNumberLong={setNumberLong}
-        setNumberShort={setNumberShort}
-      />
-      <FirstField numberLong={numberLong} setNumberLong={setNumberLong} />
-      <SecondField numberShort={numberShort} setNumberShort={setNumberShort} />
-      <ButtonRequest numberLong={numberLong} numberShort={numberShort} />
+      {response?.isTicketWon !== true ? (
+        <>
+          <HeaderCard
+            setNumberLong={setNumberLong}
+            setNumberShort={setNumberShort}
+          />
+          <FirstField numberLong={numberLong} setNumberLong={setNumberLong} />
+          <SecondField
+            numberShort={numberShort}
+            setNumberShort={setNumberShort}
+          />
+          <ButtonRequest
+            numberLong={numberLong}
+            numberShort={numberShort}
+            setResponse={setResponse}
+          />
+        </>
+      ) : (
+        <WinTicket />
+      )}
     </Box>
   );
 };
