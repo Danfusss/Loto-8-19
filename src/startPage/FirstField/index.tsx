@@ -1,8 +1,7 @@
 import { FC } from "react";
 
 import { Box, Typography } from "@mui/material";
-
-import NumberLong from "../numberLong";
+import LongNumber from "../LongNumber";
 
 interface FirstField {
   numberLong: number[];
@@ -38,7 +37,7 @@ const FirstField: FC<FirstField> = ({ numberLong, setNumberLong }) => {
         </Typography>
       </Typography>
       <Box>
-        <NumberLong numberLong={numberLong} setNumberLong={setNumberLong} />
+        <LongNumber numberLong={numberLong} setNumberLong={setNumberLong} />
       </Box>
     </>
   );

@@ -2,29 +2,9 @@ import { useState, useEffect, FC } from "react";
 
 import { Box } from "@mui/material";
 
-import { numberLong } from "../../type";
+import { numberShort } from "../../type";
 
-const number = [
-  "1",
-  "2",
-  "3",
-  "4",
-  "5",
-  "6",
-  "7",
-  "8",
-  "9",
-  "10",
-  "11",
-  "12",
-  "13",
-  "14",
-  "15",
-  "16",
-  "17",
-  "18",
-  "19",
-];
+const number = Array.from({ length: 2 }, (_, i) => i + 1).map(String);
 
 const defaultStyle = {
   width: "2vw",
@@ -44,28 +24,28 @@ const selectedStyle = {
   background: "rgb(255, 210, 5)",
 };
 
-const NumberLong: FC<numberLong> = ({ numberLong, setNumberLong }) => {
+const SmallNumber: FC<numberShort> = ({ numberShort, setNumberShort }) => {
   const [styles, setStyles] = useState(Array(number.length).fill(defaultStyle));
 
   useEffect(() => {
-    console.log(numberLong);
+    console.log(numberShort);
     const newStyles = number.map((item) => {
       const numericValue = parseInt(item, 10);
-      return numberLong.includes(numericValue) ? selectedStyle : defaultStyle;
+      return numberShort.includes(numericValue) ? selectedStyle : defaultStyle;
     });
     setStyles(newStyles);
-  }, [numberLong]);
+  }, [numberShort]);
 
   const changeStyle = (dataValue: string) => {
     const numericValue = parseInt(dataValue, 10);
 
-    setNumberLong((prevSelectedIndexes) => {
+    setNumberShort((prevSelectedIndexes) => {
       if (prevSelectedIndexes.includes(numericValue)) {
         return prevSelectedIndexes.filter((i) => i !== numericValue);
-      } else if (prevSelectedIndexes.length < 8) {
+      } else if (prevSelectedIndexes.length < 1) {
         return [...prevSelectedIndexes, numericValue];
       } else {
-        alert("Вы можете выбрать только 8 цифр.");
+        alert("Вы можете выбрать только 1 цифру.");
         return prevSelectedIndexes;
       }
     });
@@ -75,7 +55,7 @@ const NumberLong: FC<numberLong> = ({ numberLong, setNumberLong }) => {
     <Box
       sx={{
         width: "14.8vw",
-        height: "11vh",
+        height: "5vh",
         display: "flex",
         flexWrap: "wrap",
       }}
@@ -96,4 +76,4 @@ const NumberLong: FC<numberLong> = ({ numberLong, setNumberLong }) => {
   );
 };
 
-export default NumberLong;
+export default SmallNumber;

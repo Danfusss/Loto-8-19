@@ -2,9 +2,9 @@ import { useState, useEffect, FC } from "react";
 
 import { Box } from "@mui/material";
 
-import { numberShort } from "../../type";
+import { numberLong } from "../../type";
 
-const number = ["1", "2"];
+const number = Array.from({ length: 19 }, (_, i) => i + 1);
 
 const defaultStyle = {
   width: "2vw",
@@ -24,28 +24,27 @@ const selectedStyle = {
   background: "rgb(255, 210, 5)",
 };
 
-const NumberShort: FC<numberShort> = ({ numberShort, setNumberShort }) => {
+const LongNumber: FC<numberLong> = ({ numberLong, setNumberLong }) => {
   const [styles, setStyles] = useState(Array(number.length).fill(defaultStyle));
 
   useEffect(() => {
-    console.log(numberShort);
+    console.log(numberLong);
     const newStyles = number.map((item) => {
-      const numericValue = parseInt(item, 10);
-      return numberShort.includes(numericValue) ? selectedStyle : defaultStyle;
+      return numberLong.includes(item) ? selectedStyle : defaultStyle;
     });
     setStyles(newStyles);
-  }, [numberShort]);
+  }, [numberLong]);
 
   const changeStyle = (dataValue: string) => {
     const numericValue = parseInt(dataValue, 10);
 
-    setNumberShort((prevSelectedIndexes) => {
+    setNumberLong((prevSelectedIndexes) => {
       if (prevSelectedIndexes.includes(numericValue)) {
         return prevSelectedIndexes.filter((i) => i !== numericValue);
-      } else if (prevSelectedIndexes.length < 1) {
+      } else if (prevSelectedIndexes.length < 8) {
         return [...prevSelectedIndexes, numericValue];
       } else {
-        alert("Вы можете выбрать только 1 цифру.");
+        alert("Вы можете выбрать только 8 цифр.");
         return prevSelectedIndexes;
       }
     });
@@ -55,7 +54,7 @@ const NumberShort: FC<numberShort> = ({ numberShort, setNumberShort }) => {
     <Box
       sx={{
         width: "14.8vw",
-        height: "5vh",
+        height: "11vh",
         display: "flex",
         flexWrap: "wrap",
       }}
@@ -66,7 +65,7 @@ const NumberShort: FC<numberShort> = ({ numberShort, setNumberShort }) => {
             data-value={item}
             sx={styles[index]}
             key={index}
-            onClick={() => changeStyle(item)}
+            onClick={() => changeStyle(item.toString())}
           >
             {item}
           </Box>
@@ -76,4 +75,4 @@ const NumberShort: FC<numberShort> = ({ numberShort, setNumberShort }) => {
   );
 };
 
-export default NumberShort;
+export default LongNumber;

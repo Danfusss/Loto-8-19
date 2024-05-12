@@ -1,8 +1,7 @@
 import { Dispatch, FC, SetStateAction } from "react";
 
 import { Box, Typography } from "@mui/material";
-
-import NumberShort from "../numberShort";
+import SmallNumber from "../SmallNumber";
 
 interface SecondField {
   numberShort: number[];
@@ -38,7 +37,7 @@ const SecondField: FC<SecondField> = ({ numberShort, setNumberShort }) => {
         </Typography>
       </Typography>
       <Box sx={{ width: "14.4vw", height: "6.3vh" }}>
-        <NumberShort
+        <SmallNumber
           numberShort={numberShort}
           setNumberShort={setNumberShort}
         />
